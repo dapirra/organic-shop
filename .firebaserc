@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "oshop-44de5": {
+      "hosting": {
+        "oshop": [
+          "oshop-44de5"
+        ]
+      }
+    }
+  }
+}
