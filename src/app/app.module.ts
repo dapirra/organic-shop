@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from "@angular/forms";
 
 import { environment } from './../environments/environment';
 import { AdminAuthGuardService as AdminAuthGuard } from './admin-auth-guard.service';
