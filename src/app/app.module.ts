@@ -8,11 +8,13 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BsNavbarComponent
+    BsNavbarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
