@@ -11,4 +11,8 @@ export class ProductService {
   create(product) { // tslint:disable-line: typedef
     return this.db.list('/products').push(product);
   }
+
+  getAll() { // tslint:disable-line: typedef
+    return this.db.list('/products').snapshotChanges();
+  }
 }
