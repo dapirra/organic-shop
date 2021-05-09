@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -8,10 +9,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./bs-navbar.component.scss']
 })
 export class BsNavbarComponent {
-  user: firebase.default.User;
+  user$: Observable<firebase.default.User>;
 
   constructor(private afAuth: AngularFireAuth) {
-    afAuth.authState.subscribe(user => this.user = user);
+    this.user$ = afAuth.authState;
   }
 
   logout(): void {
