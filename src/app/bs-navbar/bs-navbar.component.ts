@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
-  // tslint:disable-next-line: component-selector
-  selector: 'bs-navbar',
+  selector: 'bs-navbar', // tslint:disable-line: component-selector
   templateUrl: './bs-navbar.component.html',
   styleUrls: ['./bs-navbar.component.scss']
 })
@@ -15,5 +14,4 @@ export class BsNavbarComponent {
   logout(): void {
     this.auth.logout();
   }
-
 }
