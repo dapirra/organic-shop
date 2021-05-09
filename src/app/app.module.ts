@@ -15,6 +15,7 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminProductsComponent,
+    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,
