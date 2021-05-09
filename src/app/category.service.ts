@@ -10,6 +10,8 @@ export class CategoryService {
   constructor(private db: AngularFireDatabase) { }
 
   getCategories(): Observable<unknown[]> {
-    return this.db.list('/categories').valueChanges();
+    return this.db.list('/categories',
+      query => query.orderByChild('name')
+    ).valueChanges();
   }
 }
