@@ -12,6 +12,6 @@ export class CategoryService {
   getCategories(): Observable<unknown[]> {
     return this.db.list('/categories',
       query => query.orderByChild('name')
-    ).valueChanges();
+    ).snapshotChanges();
   }
 }
