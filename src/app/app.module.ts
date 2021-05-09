@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BsNavbarComponent,
     HomeComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
