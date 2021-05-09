@@ -15,4 +15,8 @@ export class ProductService {
   getAll() { // tslint:disable-line: typedef
     return this.db.list('/products').snapshotChanges();
   }
+
+  get(productID) { // tslint:disable-line: typedef
+    return this.db.object('/products/' + productID).valueChanges();
+  }
 }
