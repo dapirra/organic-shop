@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from './../environments/environment';
+import { AdminAuthGuardService as AdminAuthGuard } from './admin-auth-guard.service';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AppComponent } from './app.component';
@@ -21,7 +22,6 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { UserService } from './user.service';
-
 
 @NgModule({
   declarations: [
@@ -60,6 +60,7 @@ import { UserService } from './user.service';
   providers: [
     AuthService,
     AuthGuard,
+    AdminAuthGuard,
     UserService,
   ],
   bootstrap: [AppComponent]
