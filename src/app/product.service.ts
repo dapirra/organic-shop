@@ -19,4 +19,8 @@ export class ProductService {
   get(productID) { // tslint:disable-line: typedef
     return this.db.object('/products/' + productID).valueChanges();
   }
+
+  update(productID, product) { // tslint:disable-line: typedef
+    return this.db.object('/products/' + productID).update(product);
+  }
 }

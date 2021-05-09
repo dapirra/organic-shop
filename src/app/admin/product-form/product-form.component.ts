@@ -12,6 +12,7 @@ import { ProductService } from './../../product.service';
 export class ProductFormComponent implements OnInit {
   categories$;
   product: any = {};
+  id;
 
   constructor(
     private router: Router,
@@ -19,10 +20,10 @@ export class ProductFormComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService) {
       this.categories$ = categoryService.getCategories();
-      const id = this.route.snapshot.paramMap.get('id');
-      if (id) {
+      this.id = this.route.snapshot.paramMap.get('id');
+      if (this.id) {
         // tslint:disable-next-line: deprecation
-        this.productService.get(id).pipe(take(1)).subscribe(p => this.product = p);
+        this.productService.get(this.id).pipe(take(1)).subscribe(p => this.product = p);
       }
   }
 
@@ -30,7 +31,12 @@ export class ProductFormComponent implements OnInit {
   }
 
   save(product): void {
-    this.productService.create(product);
+    if (this.id) {
+      this.productService.update(this.id, product);
+    } else {
+      this.productService.create(product);
+    }
+
     this.router.navigate(['/admin/products']);
   }
 
