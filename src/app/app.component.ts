@@ -14,10 +14,11 @@ export class AppComponent implements OnDestroy {
 
   constructor(private userService: UserService, private auth: AuthService, router: Router) {
     this.sub = auth.user$.subscribe(user => { // tslint:disable-line: deprecation
-      if (user) {
-        userService.save(user);
+      if (!user) return; // tslint:disable-line: curly
+      userService.save(user);
 
-        const returnURL = localStorage.getItem('returnURL');
+      const returnURL = localStorage.getItem('returnURL');
+      if (returnURL) {
         router.navigateByUrl(returnURL);
         localStorage.removeItem('returnURL');
       }
