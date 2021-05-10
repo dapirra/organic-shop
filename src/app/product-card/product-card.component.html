@@ -1,1 +1,8 @@
-<p>product-card works!</p>
+<div class="card" style="width: 15rem;">
+  <img class="card-img-top" [src]="product.payload.val().imageURL">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.payload.val().title }}</h5>
+    <p class="card-text">{{ product.payload.val().price | currency:'USD':true }}</p>
+    <a href="#" class="btn btn-primary">Add to Cart</a>
+  </div>
+</div>
