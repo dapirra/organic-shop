@@ -24,7 +24,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
         return {
           title: product.title,
           price: product.price,
-          edit: '/admin/products/' + p.key // `<a routerLink="/admin/products/${p.key}">Edit</a>`
+          edit: '/admin/products/' + p.key
         };
       });
       return this.filteredProducts = this.products = products;
