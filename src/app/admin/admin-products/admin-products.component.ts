@@ -31,11 +31,12 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
   filter(query: string): void {
-    this.rows = query ?
-      this.convertProductsToRows(this.products.filter(
+    this.rows = this.convertProductsToRows(query ?
+      this.products.filter(
         p => p.payload.val().title.toLowerCase().includes(query.toLowerCase())
-      )) :
-      this.convertProductsToRows(this.products);
+      ) :
+      this.products
+    );
   }
 
   convertProductsToRows(products): any {
