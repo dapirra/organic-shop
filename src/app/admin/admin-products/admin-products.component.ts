@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subscription } from 'rxjs';
 import { Product } from './../../models/product';
 import { ProductService } from './../../product.service';
@@ -13,6 +14,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   filteredProducts: any[];
   subscription: Subscription;
   rows;
+  ColumnMode = ColumnMode;
 
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll()
@@ -22,7 +24,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
         return {
           title: product.title,
           price: product.price,
-          edit: `<a routerLink="/admin/products/${p.key}">Edit</a>`
+          edit: '/admin/products/' + p.key // `<a routerLink="/admin/products/${p.key}">Edit</a>`
         };
       });
       return this.filteredProducts = this.products = products;
