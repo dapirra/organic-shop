@@ -19,19 +19,20 @@ export class ProductsComponent {
     productService: ProductService,
     categoryService: CategoryService) {
 
-    productService.getAll().subscribe( // tslint:disable-line: deprecation
-      products => this.products = products
-    );
+    productService.getAll().subscribe(products => { // tslint:disable-line: deprecation
+      this.products = products;
+
+      route.queryParamMap.subscribe(params => { // tslint:disable-line: deprecation
+        this.category = params.get('category');
+
+        this.filteredProducts = this.category ?
+          this.products.filter(p => p.payload.val().category === this.category) :
+          this.products;
+      });
+    });
 
     this.categories$ = categoryService.getAll();
 
-    route.queryParamMap.subscribe(params => { // tslint:disable-line: deprecation
-      this.category = params.get('category');
-
-      this.filteredProducts = this.category ?
-        this.products.filter(p => p.payload.val().category === this.category) :
-        this.products;
-    });
   }
 
 }
