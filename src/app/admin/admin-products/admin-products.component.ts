@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Product } from './../../models/product';
 import { ProductService } from './../../product.service';
 
 @Component({
@@ -11,10 +12,21 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   products: any[];
   filteredProducts: any[];
   subscription: Subscription;
+  rows;
 
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll()
-    .subscribe(products => this.filteredProducts = this.products = products); // tslint:disable-line: deprecation
+    .subscribe(products => { // tslint:disable-line: deprecation
+      this.rows = products.map(p => {
+        const product = p.payload.val() as Product;
+        return {
+          title: product.title,
+          price: product.price,
+          edit: `<a routerLink="/admin/products/${p.key}">Edit</a>`
+        };
+      });
+      return this.filteredProducts = this.products = products;
+    });
   }
 
   ngOnInit(): void {

@@ -9,7 +9,18 @@
     class="form-control"
     placeholder="Search...">
 </p>
-<table class="table">
+
+<ngx-datatable class="material"
+  [rows]="rows"
+  [columns]="[{ name: 'Title', width: 250 }, { name: 'Price' }, { name: 'Edit', sortable: false }]"
+  [limit]="10"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  rowHeight="auto"
+>
+</ngx-datatable>
+
+<!-- <table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -26,4 +37,4 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
