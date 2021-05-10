@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CustomFormsModule } from 'ng2-validation';
-
 import { environment } from './../environments/environment';
 import { AdminAuthGuardService as AdminAuthGuard } from './admin-auth-guard.service';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
@@ -25,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ProductService } from './product.service';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { UserService } from './user.service';
@@ -43,6 +43,7 @@ import { UserService } from './user.service';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
+    ProductFilterComponent,
   ],
   imports: [
     BrowserModule,
