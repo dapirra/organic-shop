@@ -22,7 +22,7 @@ export class ShoppingCartService {
     const cartID = localStorage.getItem('cartID');
     if (!cartID) {
       const result = await this.create();
-      localStorage.setItem('cardID', result.key);
+    localStorage.setItem('cartID', result.key);
       return this.getCart(result.key);
     }
     return this.getCart(cartID);
