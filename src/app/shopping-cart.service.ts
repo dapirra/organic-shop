@@ -16,7 +16,8 @@ export class ShoppingCartService {
     });
   }
 
-  private getCart(cartID: string) { // tslint:disable-line: typedef
+  async getCart() { // tslint:disable-line: typedef
+    const cartID = await this.getOrCreateCartID();
     return this.db.object('/shopping-carts/' + cartID);
   }
 
@@ -24,7 +25,7 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartID + '/items/' + productID);
   }
 
-  private async getOrCreateCartID() { // tslint:disable-line: typedef
+  private async getOrCreateCartID(): Promise<string> { // tslint:disable-line: typedef
     const cartID = localStorage.getItem('cartID');
     if (cartID) return cartID; // tslint:disable-line: curly
 
