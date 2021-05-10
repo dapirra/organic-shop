@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../models/product';
 
 @Component({
   selector: 'product-card', // tslint:disable-line: component-selector
@@ -8,6 +7,7 @@ import { Product } from '../models/product';
 })
 export class ProductCardComponent {
   @Input('product') product; // tslint:disable-line: no-input-rename
+  @Input('show-actions') showActions = true; // tslint:disable-line: no-input-rename
 
   constructor() { }
 
