@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { take } from 'rxjs/operators';
 import { Product } from './models/product';
 
@@ -16,18 +16,18 @@ export class ShoppingCartService {
     });
   }
 
-  async getCart() { // tslint:disable-line: typedef
+  async getCart(): Promise<AngularFireObject<unknown>> {
     const cartID = await this.getOrCreateCartID();
     return this.db.object('/shopping-carts/' + cartID);
   }
 
-  private getItem(cartID: string, productID: string) { // tslint:disable-line: typedef
+  private getItem(cartID: string, productID: string): AngularFireObject<unknown> {
     return this.db.object('/shopping-carts/' + cartID + '/items/' + productID);
   }
 
-  private async getOrCreateCartID(): Promise<string> { // tslint:disable-line: typedef
+  private async getOrCreateCartID(): Promise<string> {
     const cartID = localStorage.getItem('cartID');
-    if (cartID) return cartID; // tslint:disable-line: curly
+    if (cartID) { return cartID; }
 
     const result = await this.create();
     localStorage.setItem('cartID', result.key);
@@ -54,4 +54,5 @@ export class ShoppingCartService {
       });
     });
   }
+
 }
