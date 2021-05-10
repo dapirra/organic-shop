@@ -27,6 +27,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductService } from './product.service';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductsComponent } from './products/products.component';
+import { ShoppingCartService } from './shopping-cart.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { UserService } from './user.service';
 
@@ -95,6 +96,7 @@ import { UserService } from './user.service';
     UserService,
     CategoryService,
     ProductService,
+    ShoppingCartService,
   ],
   bootstrap: [AppComponent]
 })
