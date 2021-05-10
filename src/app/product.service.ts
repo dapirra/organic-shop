@@ -29,8 +29,8 @@ export class ProductService {
     return this.db.object('/products/' + productID).remove();
   }
 
-  toProduct(snapShotProduct: SnapshotAction<unknown>[]): Product[] {
-    return snapShotProduct.map(p => {
+  toProduct(snapshotProduct: SnapshotAction<unknown>[]): Product[] {
+    return snapshotProduct.map(p => {
       const product = p.payload.val() as Product;
       return {
         key: p.key,
