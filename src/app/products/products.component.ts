@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   async ngOnInit(): Promise<void> {
     this.subscription = (await this.shoppingCartService.getCart())
-    .valueChanges().subscribe(cart => this.cart = cart); // tslint:disable-line: deprecation
+      .subscribe(cart => this.cart = cart); // tslint:disable-line: deprecation
   }
 
   ngOnDestroy(): void {
