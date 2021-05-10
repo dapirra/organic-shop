@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, SnapshotAction } from '@angular/fire/database';
+import { Product } from './models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,15 @@ export class ProductService {
 
   delete(productID) { // tslint:disable-line: typedef
     return this.db.object('/products/' + productID).remove();
+  }
+
+  toProduct(snapShotProduct: SnapshotAction<unknown>[]): Product[] {
+    return snapShotProduct.map(p => {
+      const product = p.payload.val() as Product;
+      return {
+        key: p.key,
+        ...product
+      };
+    });
   }
 }
