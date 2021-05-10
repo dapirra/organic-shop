@@ -18,15 +18,13 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartID);
   }
 
-  private getOrCreateCart() { // tslint:disable-line: typedef
+  private async getOrCreateCart() { // tslint:disable-line: typedef
     const cartID = localStorage.getItem('cartID');
     if (!cartID) {
-      this.create().then(result => {
-        localStorage.setItem('cardID', result.key);
-        return this.getCart(result.key);
-      });
-    } else {
-      return this.getCart(cartID);
+      const result = await this.create();
+      localStorage.setItem('cardID', result.key);
+      return this.getCart(result.key);
     }
+    return this.getCart(cartID);
   }
 }
