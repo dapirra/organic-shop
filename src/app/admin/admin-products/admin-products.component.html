@@ -19,7 +19,11 @@
   rowHeight="auto"
 >
   <ngx-datatable-column name="Title" [flexGrow]="3"></ngx-datatable-column>
-  <ngx-datatable-column name="Price" [flexGrow]="1"></ngx-datatable-column>
+  <ngx-datatable-column name="Price" [flexGrow]="1">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value | currency:'USD':true}}
+    </ng-template>
+  </ngx-datatable-column>
   <ngx-datatable-column name="Edit" [flexGrow]="1" sortable="false">
     <ng-template let-value="value" ngx-datatable-cell-template>
       <a [routerLink]="value">Edit</a>
