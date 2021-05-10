@@ -23,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductService } from './product.service';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductsComponent } from './products/products.component';
@@ -44,6 +45,7 @@ import { UserService } from './user.service';
     LoginComponent,
     ProductFormComponent,
     ProductFilterComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
