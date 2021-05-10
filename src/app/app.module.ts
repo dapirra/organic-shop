@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DataTableModule } from 'angular-4-data-table';
 import { CustomFormsModule } from 'ng2-validation';
 
 import { environment } from './../environments/environment';
@@ -48,7 +47,6 @@ import { UserService } from './user.service';
     BrowserModule,
     FormsModule,
     CustomFormsModule,
-    DataTableModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
