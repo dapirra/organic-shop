@@ -11,9 +11,9 @@ import { ProductService } from './../../product.service';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
   products: any[];
-  subscription: Subscription;
   rows: any[];
   ColumnMode = ColumnMode;
+  subscription: Subscription;
 
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll()
