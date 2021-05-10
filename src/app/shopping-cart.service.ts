@@ -34,14 +34,23 @@ export class ShoppingCartService {
     return result.key;
   }
 
-  async addToCart(product: Product) { // tslint:disable-line: typedef
+  async addToCart(product: Product): Promise<void> {
+    this.updateItemQuantity(product, 1);
+  }
+
+  async removeFromCart(product: Product): Promise<void> {
+    this.updateItemQuantity(product, -1);
+  }
+
+  async updateItemQuantity(product: Product, change: number): Promise<void> {
     const cartID = await this.getOrCreateCartID();
     const item$ = this.getItem(cartID, product.key);
+
     item$.snapshotChanges().pipe(take(1)).subscribe(item => { // tslint:disable-line: deprecation
       const itemValue = item.payload.val() as {quantity: number};
       item$.update({
         product,
-        quantity: (itemValue?.quantity || 0) + 1
+        quantity: (itemValue?.quantity || 0) + change
       });
     });
   }
