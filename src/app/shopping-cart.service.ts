@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
 
-  constructor() { }
+  constructor(private db: AngularFireDatabase) { }
+
+  create() { // tslint:disable-line: typedef
+    return this.db.list('/shopping-carts').push({
+      dateCreated: new Date().getTime()
+    });
+  }
 }
