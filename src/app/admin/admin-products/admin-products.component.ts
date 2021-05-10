@@ -11,23 +11,15 @@ import { ProductService } from './../../product.service';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
   products: any[];
-  filteredProducts: any[];
   subscription: Subscription;
-  rows;
+  rows: any[];
   ColumnMode = ColumnMode;
 
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll()
     .subscribe(products => { // tslint:disable-line: deprecation
-      this.rows = products.map(p => {
-        const product = p.payload.val() as Product;
-        return {
-          title: product.title,
-          price: product.price,
-          edit: '/admin/products/' + p.key
-        };
-      });
-      return this.filteredProducts = this.products = products;
+      this.rows = this.convertProductsToRows(products);
+      return this.products = products;
     });
   }
 
@@ -39,10 +31,21 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
   filter(query: string): void {
-    this.filteredProducts = query ?
-      this.products.filter(
+    this.rows = query ?
+      this.convertProductsToRows(this.products.filter(
         p => p.payload.val().title.toLowerCase().includes(query.toLowerCase())
-      ) :
-      this.products;
+      )) :
+      this.convertProductsToRows(this.products);
+  }
+
+  convertProductsToRows(products): any {
+    return products.map(p => {
+      const product = p.payload.val() as Product;
+      return {
+        title: product.title,
+        price: product.price,
+        edit: '/admin/products/' + p.key
+      };
+    });
   }
 }
