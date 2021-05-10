@@ -20,6 +20,10 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartID);
   }
 
+  private getItem(cartID: string, productID: string) { // tslint:disable-line: typedef
+    return this.db.object('/shopping-carts/' + cartID + '/items/' + productID);
+  }
+
   private async getOrCreateCartID() { // tslint:disable-line: typedef
     const cartID = localStorage.getItem('cartID');
     if (cartID) return cartID; // tslint:disable-line: curly
@@ -31,18 +35,13 @@ export class ShoppingCartService {
 
   async addToCart(product: Product) { // tslint:disable-line: typedef
     const cartID = await this.getOrCreateCartID();
-    const item$ = this.db.object('/shopping-carts/' + cartID + '/items/' + product.key);
+    const item$ = this.getItem(cartID, product.key);
     item$.snapshotChanges().pipe(take(1)).subscribe(item => { // tslint:disable-line: deprecation
-      if (item.payload.exists()) {
-        item$.update({
-          quantity: (item.payload.val() as {quantity: number}).quantity + 1
-        });
-      } else {
-        item$.set({
-          product,
-          quantity: 1
-        });
-      }
+      const itemValue = item.payload.val() as {quantity: number};
+      item$.update({
+        product,
+        quantity: (itemValue?.quantity || 0) + 1
+      });
     });
   }
 }
