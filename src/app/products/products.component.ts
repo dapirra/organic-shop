@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Product } from '../models/product';
 import { ProductService } from '../product.service';
+import { ShoppingCart } from './../models/shopping-cart';
 import { ShoppingCartService } from './../shopping-cart.service';
 
 @Component({
@@ -11,37 +12,38 @@ import { ShoppingCartService } from './../shopping-cart.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   category: string;
-  cart: any;
-  subscription: Subscription;
+  cart$: Observable<ShoppingCart>;
 
   constructor(
-    route: ActivatedRoute,
-    productService: ProductService,
+    private route: ActivatedRoute,
+    private productService: ProductService,
     private shoppingCartService: ShoppingCartService,
   ) {
-    productService.getAll().pipe(
-      switchMap(snapProducts => {
-        this.products = productService.toProduct(snapProducts);
-        return route.queryParamMap;
-      })).subscribe(params => { // tslint:disable-line: deprecation
-        this.category = params.get('category');
-
-        this.filteredProducts = this.category ?
-          this.products.filter(p => p.category === this.category) :
-          this.products;
-      });
   }
 
   async ngOnInit(): Promise<void> {
-    this.subscription = (await this.shoppingCartService.getCart())
-      .subscribe(cart => this.cart = cart); // tslint:disable-line: deprecation
+    this.cart$ = await this.shoppingCartService.getCart();
+    this.populateProducts();
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  private populateProducts(): void {
+    this.productService.getAll().pipe(
+      switchMap(snapProducts => {
+        this.products = this.productService.toProduct(snapProducts);
+        return this.route.queryParamMap;
+      })).subscribe(params => { // tslint:disable-line: deprecation
+        this.category = params.get('category');
+        this.applyFilter();
+      });
+  }
+
+  private applyFilter(): void {
+    this.filteredProducts = this.category ?
+      this.products.filter(p => p.category === this.category) :
+      this.products;
   }
 }
