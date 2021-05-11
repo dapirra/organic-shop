@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../models/product';
+import { ShoppingCart } from './../models/shopping-cart';
 import { ShoppingCartService } from './../shopping-cart.service';
 
 @Component({
@@ -8,9 +9,9 @@ import { ShoppingCartService } from './../shopping-cart.service';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent {
-  @Input('product') product; // tslint:disable-line: no-input-rename
+  @Input('product') product: Product; // tslint:disable-line: no-input-rename
   @Input('show-actions') showActions = true; // tslint:disable-line: no-input-rename
-  @Input('shopping-cart') shoppingCart; // tslint:disable-line: no-input-rename
+  @Input('shopping-cart') shoppingCart: ShoppingCart; // tslint:disable-line: no-input-rename
 
   constructor(private cartService: ShoppingCartService) { }
 
@@ -18,13 +19,4 @@ export class ProductCardComponent {
     this.cartService.addToCart(this.product);
   }
 
-  removeFromCart(): void {
-    this.cartService.removeFromCart(this.product);
-  }
-
-  getQuantity(): number {
-    if (!this.shoppingCart) { return 0; }
-    const item = this.shoppingCart.itemsMap[this.product.key];
-    return item ? item.quantity : 0;
-  }
 }

@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from '../models/product';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
-  selector: 'app-product-quantity',
+  selector: 'product-quantity', // tslint:disable-line: component-selector
   templateUrl: './product-quantity.component.html',
   styleUrls: ['./product-quantity.component.scss']
 })
-export class ProductQuantityComponent implements OnInit {
+export class ProductQuantityComponent {
+  @Input('product') product: Product; // tslint:disable-line: no-input-rename
+  @Input('shopping-cart') shoppingCart; // tslint:disable-line: no-input-rename
 
-  constructor() { }
+  constructor(private cartService: ShoppingCartService) { }
 
-  ngOnInit(): void {
+  addToCart(): void {
+    this.cartService.addToCart(this.product);
+  }
+
+  removeFromCart(): void {
+    this.cartService.removeFromCart(this.product);
   }
 
 }
