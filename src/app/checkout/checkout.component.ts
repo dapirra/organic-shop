@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { OrderService } from '../order.service';
+import { Order } from './../models/order';
 import { ShoppingCart } from './../models/shopping-cart';
 import { ShoppingCartService } from './../shopping-cart.service';
 
@@ -34,23 +35,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   }
 
   placeOrder(): void {
-    const order = {
-      userId: this.userID,
-      datePlaced: new Date().getTime(),
-      shipping: this.shipping,
-      items: this.cart.items.map(i => {
-        return {
-          product: {
-            title: i.title,
-            imageURL: i.imageURL,
-            price: i.price,
-          },
-          quantity: i.quantity,
-          totalPrice: i.totalPrice,
-        };
-      })
-    };
-
+    const order = new Order(this.userID, this.shipping, this.cart);
     this.orderService.storeOrder(order);
   }
 }
