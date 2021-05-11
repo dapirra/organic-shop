@@ -4,7 +4,7 @@ import { ShoppingCartItem } from './shopping-cart-item';
 export class ShoppingCart {
   items: ShoppingCartItem[] = [];
 
-  constructor(public itemsMap: { [productID: string]: ShoppingCartItem }) {
+  constructor(private itemsMap: { [productID: string]: ShoppingCartItem }) {
     this.itemsMap = itemsMap || {};
 
     for (const productID in itemsMap) { // tslint:disable-line: forin
