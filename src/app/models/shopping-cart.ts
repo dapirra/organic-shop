@@ -5,9 +5,14 @@ export class ShoppingCart {
   items: ShoppingCartItem[] = [];
 
   constructor(public itemsMap: { [productID: string]: ShoppingCartItem }) {
+    this.itemsMap = itemsMap || {};
+
     for (const productID in itemsMap) { // tslint:disable-line: forin
       const item = itemsMap[productID];
-      this.items.push(new ShoppingCartItem(item.product, item.quantity));
+      const x = new ShoppingCartItem();
+      Object.assign(x, item);
+      x.key = productID;
+      this.items.push(x);
     }
   }
 

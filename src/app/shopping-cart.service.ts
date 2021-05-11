@@ -41,21 +41,23 @@ export class ShoppingCartService {
   }
 
   async addToCart(product: Product): Promise<void> {
-    this.updateItemQuantity(product, 1);
+    this.updateItem(product, 1);
   }
 
   async removeFromCart(product: Product): Promise<void> {
-    this.updateItemQuantity(product, -1);
+    this.updateItem(product, -1);
   }
 
-  async updateItemQuantity(product: Product, change: number): Promise<void> {
+  async updateItem(product: Product, change: number): Promise<void> {
     const cartID = await this.getOrCreateCartID();
     const item$ = this.getItem(cartID, product.key);
 
     item$.snapshotChanges().pipe(take(1)).subscribe(item => { // tslint:disable-line: deprecation
       const itemValue = item.payload.val() as {quantity: number};
       item$.update({
-        product,
+        title: product.title,
+        imageURL: product.imageURL,
+        price: product.price,
         quantity: (itemValue?.quantity || 0) + change
       });
     });
