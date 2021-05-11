@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subscription } from 'rxjs';
 import { Product } from '@shared/models/product';
-import { ProductService } from './../../product.service';
+import { ProductService } from '@shared/services/product.service';
 
 @Component({
   selector: 'app-admin-products',

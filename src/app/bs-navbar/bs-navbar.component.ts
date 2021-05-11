@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppUser } from '@shared/models/app-user';
 import { ShoppingCart } from '@shared/models/shopping-cart';
 import { Observable, Subscription } from 'rxjs';
-import { AuthService } from '../auth.service';
-import { ShoppingCartService } from './../shopping-cart.service';
+import { AuthService } from '@shared/services/auth.service';
+import { ShoppingCartService } from '@shared/services/shopping-cart.service';
 
 @Component({
   selector: 'bs-navbar', // tslint:disable-line: component-selector
