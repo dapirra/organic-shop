@@ -18,6 +18,7 @@
     ],
     "paths": {
       "@admin/*": ["app/admin/*"],
+      "@core/*": ["app/core/*"],
       "@shared/*": ["app/shared/*"],
       "@shopping/*": ["app/shopping/*"],
     }
