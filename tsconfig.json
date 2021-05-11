@@ -18,7 +18,8 @@
     ],
     "paths": {
       "@admin/*": ["app/admin/*"],
-      "@shared/*": ["app/shared/*"]
+      "@shared/*": ["app/shared/*"],
+      "@shopping/*": ["app/shopping/*"],
     }
   },
   "angularCompilerOptions": {
