@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subscription } from 'rxjs';
-import { Product } from './../../models/product';
+import { Product } from '@shared/models/product';
 import { ProductService } from './../../product.service';
 
 @Component({

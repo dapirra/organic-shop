@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CategoryService } from 'src/app/category.service';
+import { CategoryService } from './../../category.service';
 
 @Component({
   selector: 'product-filter', // tslint:disable-line: component-selector
