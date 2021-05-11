@@ -38,7 +38,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
   async placeOrder(): Promise<void> {
     const order = new Order(this.userID, this.shipping, this.cart);
-    const result = await this.orderService.storeOrder(order);
+    const result = await this.orderService.placeOrder(order);
     this.router.navigate(['/order-success', result.key]);
   }
 }
