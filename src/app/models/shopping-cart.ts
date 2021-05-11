@@ -5,8 +5,17 @@ export class ShoppingCart {
 
   constructor(public itemsMap: { [productID: string]: ShoppingCartItem }) {
     for (const productID in itemsMap) { // tslint:disable-line: forin
-      this.items.push(itemsMap[productID]);
+      const item = itemsMap[productID];
+      this.items.push(new ShoppingCartItem(item.product, item.quantity));
     }
+  }
+
+  get totalPrice(): number {
+    let sum = 0;
+    for (const productID in this.items) { // tslint:disable-line: forin
+      sum += this.items[productID].totalPrice;
+    }
+    return sum;
   }
 
   get totalItemsCount(): number {
