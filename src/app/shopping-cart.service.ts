@@ -59,11 +59,18 @@ export class ShoppingCartService {
 
     item$.snapshotChanges().pipe(take(1)).subscribe(item => { // tslint:disable-line: deprecation
       const itemValue = item.payload.val() as {quantity: number};
+      const quantity = (itemValue?.quantity || 0) + change;
+
+      if (quantity === 0) {
+        item$.remove();
+        return;
+      }
+
       item$.update({
         title: product.title,
         imageURL: product.imageURL,
         price: product.price,
-        quantity: (itemValue?.quantity || 0) + change
+        quantity
       });
     });
   }
