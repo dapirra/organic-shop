@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CustomFormsModule } from 'ng2-validation';
 import { environment } from './../environments/environment';
-import { AdminAuthGuardService as AdminAuthGuard } from './admin-auth-guard.service';
+import { AdminAuthGuardService as AdminAuthGuard } from '@admin/services/admin-auth-guard.service';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
