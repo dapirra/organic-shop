@@ -1,16 +1,18 @@
 import { ShoppingCartItem } from './shopping-cart-item';
 
 export class ShoppingCart {
-  constructor(public items: ShoppingCartItem[]) {}
+  items: ShoppingCartItem[] = [];
 
-  get productIDs(): string[] {
-    return Object.keys(this.items);
+  constructor(public itemsMap: { [productID: string]: ShoppingCartItem }) {
+    for (const productID in itemsMap) { // tslint:disable-line: forin
+      this.items.push(itemsMap[productID]);
+    }
   }
 
   get totalItemsCount(): number {
     let count = 0;
-    for (const productID in this.items) { // tslint:disable-line: forin
-      count += this.items[productID].quantity;
+    for (const productID in this.itemsMap) { // tslint:disable-line: forin
+      count += this.itemsMap[productID].quantity;
     }
     return count;
   }
