@@ -1,3 +1,4 @@
+import { AdminAuthGuardService as AdminAuthGuard } from '@admin/services/admin-auth-guard.service';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -6,34 +7,26 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuardService as AuthGuard } from '@shared/services/auth-guard.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CustomFormsModule } from 'ng2-validation';
 import { environment } from './../environments/environment';
-import { AdminAuthGuardService as AdminAuthGuard } from '@admin/services/admin-auth-guard.service';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { AppComponent } from './app.component';
-import { AuthGuardService as AuthGuard } from '@shared/services/auth-guard.service';
-import { AuthService } from '@shared/services/auth.service';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
-import { CategoryService } from '@shared/services/category.service';
 import { CheckOutComponent } from './checkout/checkout.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
-import { OrderService } from '@shared/services/order.service';
-import { ProductCardComponent } from '@shared/components/product-card/product-card.component';
-import { ProductQuantityComponent } from '@shared/components/product-quantity/product-quantity.component';
-import { ProductService } from '@shared/services/product.service';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductsComponent } from './products/products.component';
+import { SharedModule } from './shared/shared.module';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
-import { ShoppingCartService } from '@shared/services/shopping-cart.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { UserService } from '@shared/services/user.service';
 
 @NgModule({
   declarations: [
@@ -50,13 +43,12 @@ import { UserService } from '@shared/services/user.service';
     LoginComponent,
     ProductFormComponent,
     ProductFilterComponent,
-    ProductCardComponent,
-    ProductQuantityComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     FormsModule,
     CustomFormsModule,
     NgxDatatableModule,
@@ -97,14 +89,7 @@ import { UserService } from '@shared/services/user.service';
     NgbModule
   ],
   providers: [
-    AuthService,
-    AuthGuard,
     AdminAuthGuard,
-    UserService,
-    CategoryService,
-    ProductService,
-    ShoppingCartService,
-    OrderService,
   ],
   bootstrap: [AppComponent]
 })
