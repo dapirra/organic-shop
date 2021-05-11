@@ -11,9 +11,9 @@ import { AuthGuardService as AuthGuard } from '@shared/services/auth-guard.servi
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CustomFormsModule } from 'ng2-validation';
 import { environment } from './../environments/environment';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AdminOrdersComponent } from '@admin/components/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from '@admin/components/admin-products/admin-products.component';
+import { ProductFormComponent } from '@admin/components/product-form/product-form.component';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { CheckOutComponent } from './checkout/checkout.component';
