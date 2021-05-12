@@ -1,10 +1,7 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthGuardService as AuthGuard } from '@shared/services/auth-guard.service';
 import { SharedModule } from '@shared/shared.module';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './components/admin-products/admin-products.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
@@ -17,10 +14,7 @@ import { AdminAuthGuardService as AdminAuthGuard } from './services/admin-auth-g
     ProductFormComponent,
   ],
   imports: [
-    CommonModule,
-    FormsModule,
     SharedModule,
-    NgxDatatableModule,
     RouterModule.forChild([
       {
         path: 'admin/products/new',
