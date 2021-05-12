@@ -23,6 +23,7 @@
     "@angular/router": "~11.2.9",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
+    "@popperjs/core": "^2.9.2",
     "@swimlane/ngx-datatable": "^19.0.0",
     "bootstrap": "^4.6.0",
     "firebase": "^8.5.0",
