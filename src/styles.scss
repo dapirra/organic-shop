@@ -1,12 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+// Import Bootstrap styles
+@import '~bootstrap/scss/bootstrap';
+
+// Import ngx-datatable styles
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+// Import font-awesome styles
+@import '@fortawesome/fontawesome-free/css/all.css';
 
 body {
     padding-top: 80px;
 }
-
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
-
-@import '~@swimlane/ngx-datatable/index.css';
-@import '~@swimlane/ngx-datatable/themes/material.scss';
-@import '~@swimlane/ngx-datatable/assets/icons.css';
