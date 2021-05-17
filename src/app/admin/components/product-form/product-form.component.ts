@@ -12,13 +12,13 @@ import { ProductService } from '@shared/services/product.service';
 export class ProductFormComponent implements OnInit {
   categories$;
   product: any = {};
-  id;
+  id: string;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private categoryService: CategoryService,
-    private productService: ProductService
+    private productService: ProductService,
+    categoryService: CategoryService,
     ) {
       this.categories$ = categoryService.getAll();
       this.id = this.route.snapshot.paramMap.get('id');
