@@ -21,7 +21,7 @@
   <ngx-datatable-column name="Title" [flexGrow]="3"></ngx-datatable-column>
   <ngx-datatable-column name="Price" [flexGrow]="1">
     <ng-template let-value="value" ngx-datatable-cell-template>
-      {{value | currency:'USD':true}}
+      {{ value | currency:'USD' }}
     </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column name="Edit" [flexGrow]="1" sortable="false">
