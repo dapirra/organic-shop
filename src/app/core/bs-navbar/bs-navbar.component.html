@@ -15,11 +15,19 @@
     </ul>
     <ul class="navbar-nav" id="category-dropdown-list">
       <li ngbDropdown class="nav-item dropdown">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="category-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a ngbDropdownToggle
+          id="category-dropdown"
+          class="nav-link dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
           Categories:
         </a>
         <div ngbDropdownMenu class="dropdown-menu">
-          <a routerLink="/" class="dropdown-item" [class.active]="category === null">All Categories</a>
+          <a routerLink="/" class="dropdown-item" [class.active]="category === null">
+            All Categories
+          </a>
           <a
             *ngFor="let c of categories$ | async"
             routerLink="/"
@@ -39,7 +47,13 @@
         </li>
       </ng-template>
       <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a ngbDropdownToggle
+          id="user-dropdown"
+          class="nav-link dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
           {{ appUser.name }}
         </a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="user-dropdown">
