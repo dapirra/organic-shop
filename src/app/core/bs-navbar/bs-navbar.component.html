@@ -13,6 +13,25 @@
         </a>
       </li>
     </ul>
+    <ul class="navbar-nav" id="category-dropdown-list">
+      <li ngbDropdown class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="category-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories:
+        </a>
+        <div ngbDropdownMenu class="dropdown-menu">
+          <a routerLink="/" class="dropdown-item" [class.active]="category === null">All Categories</a>
+          <a
+            *ngFor="let c of categories$ | async"
+            routerLink="/"
+            [queryParams]="{ category: c.key }"
+            class="dropdown-item"
+            [class.active]="category === c.key"
+          >
+            {{ c.payload.val().name }}
+          </a>
+        </div>
+      </li>
+    </ul>
     <ul class="navbar-nav" id="dropdown-list">
       <ng-template #anonymousUser>
         <li class="nav-item">

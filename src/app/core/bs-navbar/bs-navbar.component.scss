@@ -1,13 +1,24 @@
 #shopping-cart {
   white-space: nowrap;
+  padding-right: 1rem;
 }
 
 .dropdown-toggle {
   cursor: pointer;
 }
 
+#category-dropdown {
+  display: none;
+  text-align: right;
+}
+
 #dropdown-list {
   margin-left: 1rem;
+}
+
+.dropdown-menu {
+  left: unset;
+  right: 0;
 }
 
 @media (max-width: 767px) {
@@ -19,9 +30,8 @@
   #dropdown-list {
     overflow-x: hidden;
   }
-}
 
-.dropdown-menu {
-  left: unset;
-  right: 0;
+  #category-dropdown {
+    display: block;
+  }
 }

@@ -14,3 +14,9 @@
 .card-footer button {
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  .card img {
+    width: auto;
+  }
+}
