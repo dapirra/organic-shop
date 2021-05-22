@@ -41,4 +41,8 @@ export class BsNavbarComponent implements OnInit, OnDestroy {
   logout(): void {
     this.auth.logout();
   }
+
+  get hideCategories(): boolean {
+    return location.pathname !== '/';
+  }
 }
