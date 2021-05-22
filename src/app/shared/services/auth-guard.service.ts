@@ -13,7 +13,7 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(route, state: RouterStateSnapshot): Observable<boolean> {
     return this.auth.user$.pipe(map(user => {
-      if (user) return true; // tslint:disable-line: curly
+      if (user) { return true; }
 
       this.router.navigate(['/login'], {
         queryParams: {

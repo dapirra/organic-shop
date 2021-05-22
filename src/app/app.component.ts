@@ -14,7 +14,7 @@ export class AppComponent implements OnDestroy {
 
   constructor(private userService: UserService, private auth: AuthService, router: Router) {
     this.sub = auth.user$.subscribe(user => { // tslint:disable-line: deprecation
-      if (!user) return; // tslint:disable-line: curly
+      if (!user) { return; }
       userService.save(user);
 
       const returnURL = localStorage.getItem('returnURL');

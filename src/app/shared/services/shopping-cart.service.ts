@@ -46,7 +46,9 @@ export class ShoppingCartService {
 
   private async getOrCreateCartID(): Promise<string> {
     const cartID = localStorage.getItem('cartID');
-    if (cartID) { return cartID; }
+    if (cartID) {
+      return cartID;
+    }
 
     const result = await this.create();
     localStorage.setItem('cartID', result.key);
