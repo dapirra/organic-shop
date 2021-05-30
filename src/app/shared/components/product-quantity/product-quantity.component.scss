@@ -1,4 +1,13 @@
 .quantity {
   height: 37px;
   line-height: 37px;
+  padding: 0 0.25rem;
+}
+
+.row {
+  flex-flow: row;
+}
+
+button {
+  width: 2.5rem;
 }
